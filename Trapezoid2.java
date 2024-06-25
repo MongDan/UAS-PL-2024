@@ -8,7 +8,6 @@ import java.util.List;
 public class Trapezoid2 {
     public static void main(String[] args) {
         String nama = "C:\\Users\\MONG\\IdeaProjects\\UASPL\\src\\KelilingBlmDiurut.txt";
-        String FileUrut = "C:\\Users\\MONG\\IdeaProjects\\UASPL\\src\\KelilingYangTelatDiUrut.txt";
         List<Double>dandy = new ArrayList<>();
         try(BufferedReader br = new BufferedReader(new FileReader(nama))){
             String line;
@@ -18,6 +17,8 @@ public class Trapezoid2 {
         }catch (IOException e){
             System.err.println(e.getMessage());
         }
+        String FileUrut = "C:\\Users\\MONG\\IdeaProjects\\UASPL\\src\\KelilingYangTelatDiUrut.txt";
+        try (FileWriter dop= new FileWriter(FileUrut)){
         int p = dandy.size();
         for (int i = 0; i < p - 1; i++) {
             for (int j = 0; j < p - i - 1; j++) {
@@ -29,13 +30,13 @@ public class Trapezoid2 {
                 }
             }
         }
-        try (FileWriter fw = new FileWriter(FileUrut)){
             for (double kelilng : dandy){
-                fw.write(kelilng + "\n");
+                dop.write(kelilng + "\n");
             }
             System.out.println("DiFile yang telah di urut");
         }catch (IOException e){
             System.err.println(e.getMessage());
+
         }
     }
 }
